@@ -49,9 +49,6 @@
             images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
             tags: |
               type=ref,event=branch 
-              type=raw,value=latest
-              type=raw,value=${{ env.DOCKERTAG }}
-              type=sha
   
         - name: Build/push container image
           uses: docker/build-push-action@v5
@@ -59,6 +56,6 @@
             cache-from: type=gha,scope=container
             cache-to: type=gha,mode=max,scope=container
             context: .
-            push: true
+            push: false
             labels: ${{ steps.metadata.outputs.labels }}
             tags: ${{ steps.metadata.outputs.tags }}
