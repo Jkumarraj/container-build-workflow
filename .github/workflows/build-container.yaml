@@ -51,6 +51,8 @@
         - name: Build/push container image
           uses: docker/build-push-action@v5
           with:
+            cache-from: type=gha,scope=container
+            cache-to: type=gha,mode=max,scopr=container
             context: .
             push: true
             labels: ${{ steps.metadata.outputs.labels }}
