@@ -19,13 +19,14 @@ jobs:
       packages: write
 
     steps:
-      - name: Wait for container buildcache
+      - name: Wait for container build cache
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
           ref: main
           check-name: Build Container
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 30
+
  
       - name: Checkout repo
         uses: actions/checkout@v4
